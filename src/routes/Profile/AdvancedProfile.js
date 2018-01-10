@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Debounce from 'lodash-decorators/debounce';
+import Bind from 'lodash-decorators/bind';
 import { connect } from 'dva';
 import { Button, Menu, Dropdown, Icon, Row, Col, Steps, Card, Popover, Badge, Table, Tooltip, Divider } from 'antd';
 import classNames from 'classnames';
@@ -96,12 +97,11 @@ const popoverContent = (
   </div>
 );
 
-const customDot = (dot, { status }) => (status === 'process' ?
+const customDot = (dot, { status }) => (status === 'process' ? (
   <Popover placement="topLeft" arrowPointAtCenter content={popoverContent}>
     {dot}
   </Popover>
-  : dot
-);
+) : dot);
 
 const operationTabList = [{
   key: 'tab1',
@@ -139,8 +139,9 @@ const columns = [{
   key: 'memo',
 }];
 
-@connect(state => ({
-  profile: state.profile,
+@connect(({ profile, loading }) => ({
+  profile,
+  loading: loading.effects['profile/fetchAdvanced'],
 }))
 export default class AdvancedProfile extends Component {
   state = {
@@ -160,14 +161,16 @@ export default class AdvancedProfile extends Component {
 
   componentWillUnmount() {
     window.removeEventListener('resize', this.setStepDirection);
+    this.setStepDirection.cancel();
   }
 
   onOperationTabChange = (key) => {
     this.setState({ operationkey: key });
   }
 
+  @Bind()
   @Debounce(200)
-  setStepDirection = () => {
+  setStepDirection() {
     const { stepDirection } = this.state;
     const w = getWindowWidth();
     if (stepDirection !== 'vertical' && w <= 576) {
@@ -183,24 +186,24 @@ export default class AdvancedProfile extends Component {
 
   render() {
     const { stepDirection } = this.state;
-    const { profile } = this.props;
-    const { advancedLoading, advancedOperation1, advancedOperation2, advancedOperation3 } = profile;
+    const { profile, loading } = this.props;
+    const { advancedOperation1, advancedOperation2, advancedOperation3 } = profile;
     const contentList = {
       tab1: <Table
         pagination={false}
-        loading={advancedLoading}
+        loading={loading}
         dataSource={advancedOperation1}
         columns={columns}
       />,
       tab2: <Table
         pagination={false}
-        loading={advancedLoading}
+        loading={loading}
         dataSource={advancedOperation2}
         columns={columns}
       />,
       tab3: <Table
         pagination={false}
-        loading={advancedLoading}
+        loading={loading}
         dataSource={advancedOperation3}
         columns={columns}
       />,
