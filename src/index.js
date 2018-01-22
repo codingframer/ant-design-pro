@@ -28,6 +28,7 @@ app.router(require('./router').default);
 // 5. Start
 app.start('#root');
 
+global.API_PREFIX = 'http://localhost:8080';
 
 FastClick.attach(document.body);
 

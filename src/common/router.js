@@ -162,6 +162,19 @@ export const getRouterData = (app) => {
     // '/user/:id': {
     //   component: dynamicWrapper(app, [], () => import('../routes/User/SomeComponent')),
     // },
+
+
+
+    '/emulate/topology': {
+      component: dynamicWrapper(app, ['emulate'], () => import('../routes/Emulate/Topology')),
+    },
+    '/emulate/load_history': {
+      component: dynamicWrapper(app, ['load_history'], () => import('../routes/Emulate/LoadHistory')),
+    },
+    '/system/logs': {
+      component: dynamicWrapper(app, ['logs'], () => import('../routes/System/Logs')),
+    },
+
   };
   // Get name from ./menu.js or just set it in the router data.
   const menuData = getFlatMenuData(getMenuData());

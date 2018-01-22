@@ -118,7 +118,33 @@ const menuData = [{
   icon: 'book',
   path: 'http://pro.ant.design/docs/getting-started',
   target: '_blank',
-}];
+},
+
+
+  {
+    name: '模拟仿真',
+    path: 'emulate',
+    icon: 'api',
+    children: [{
+      name: '拓扑结构',
+      path: 'topology',
+      icon: 'usb',
+    }, {
+      name: '负荷数据',
+      path: 'load_history',
+      icon: 'line-chart',
+    }],
+  }, {
+    name: '系统管理',
+    path: 'system',
+    icon: 'setting',
+    children: [{
+      name: '系统日志',
+      path: 'logs',
+      icon: 'bars',
+    }],
+  }
+];
 
 function formatter(data, parentPath = '', parentAuthority) {
   return data.map((item) => {
