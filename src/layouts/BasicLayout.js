@@ -218,6 +218,7 @@ class BasicLayout extends React.PureComponent {
               href: 'http://ant.design',
               blankTarget: true,
             }]}
+
             copyright={
               <div>
                 Copyright <Icon type="copyright" /> 2018 国网临沂供电公司
