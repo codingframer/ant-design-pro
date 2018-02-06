@@ -130,6 +130,10 @@ const menuData = [{
       path: 'topology',
       icon: 'usb',
     }, {
+      name: '拓扑结构',
+      path: 'topology_tree',
+      icon: 'fork',
+    }, {
       name: '负荷数据',
       path: 'load_history',
       icon: 'line-chart',

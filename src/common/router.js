@@ -169,6 +169,9 @@ export const getRouterData = (app) => {
     '/emulate/topology': {
       component: dynamicWrapper(app, ['emulate'], () => import('../routes/Emulate/Topology')),
     },
+    '/emulate/topology_tree': {
+      component: dynamicWrapper(app, [], () => import('../routes/Emulate/Tree')),
+    },
     '/emulate/load_history': {
       component: dynamicWrapper(app, ['load_history'], () => import('../routes/Emulate/LoadHistory')),
     },
