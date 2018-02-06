@@ -3,7 +3,7 @@ import request from '../utils/request';
 
 /** 拓扑结构 */
 export function fetchTopology() {
-  return request(`${global.API_PREFIX}/api/topology/tree_all`);
+  return request(`${global.API_PREFIX}/api/topology/tree_all2`);
 }
 
 /** 负荷数据 */
