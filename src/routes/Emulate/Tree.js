@@ -21,8 +21,8 @@ export default class Topology extends PureComponent {
   };
 
   componentDidMount() {
-    let canvas = this.refs.canvas;
-    let stage = new JTopo.Stage(canvas);
+    const cav = this.refs.canvas;
+    let stage = new JTopo.Stage(cav);
     console.log(stage);
 
     // showJTopoToobar(stage);//显示工具栏
