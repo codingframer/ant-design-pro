@@ -105,6 +105,9 @@ export default class Topology extends PureComponent {
       edges: {
         color: '#000000',
       },
+      physics: {
+        enabled: false,
+      },
       locales,
       manipulation: {
         // enabled: true, initiallyActive: true, addEdge: true,
